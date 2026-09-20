@@ -1,0 +1,24 @@
+agent_skill
+Copyright 2026 agent_skill Authors and Contributors
+
+This product includes software developed by open-source projects and third-party contributors:
+
+1. Google OR-Tools
+   - Copyright 2010-2026 Google LLC
+   - Licensed under the Apache License, Version 2.0
+   - URL: https://github.com/google/or-tools
+
+2. Microsoft ONNX Runtime
+   - Copyright (c) Microsoft Corporation. All rights reserved.
+   - Licensed under the MIT License
+   - URL: https://github.com/microsoft/onnxruntime
+
+3. Graphify
+   - Copyright (c) 2025-2026 Graphify Authors
+   - Licensed under the MIT License
+   - URL: https://github.com/Graphify-Labs/graphify
+
+4. Tree-Sitter
+   - Copyright (c) 2018 Max Brunsfeld
+   - Licensed under the MIT License
+   - URL: https://github.com/tree-sitter/tree-sitter

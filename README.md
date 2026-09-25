@@ -4,10 +4,13 @@
 [![Python](https://img.shields.io/badge/Python-3.10%20%7C%203.11%20%7C%203.12-blue)](https://www.python.org/)
 [![Enterprise Ready](https://img.shields.io/badge/Enterprise-Zero_Shell_Scripts-green.svg)](SECURITY.md)
 
-A lightweight utility collection and runtime toolchain bundling deterministic ML, constraint satisfaction, and abstract syntax tree (AST) code analysis capabilities for autonomous agent environments.
+A lightweight utility collection and runtime toolchain bundling deterministic ML, constraint satisfaction, open-source agent runners, and abstract syntax tree (AST) code analysis capabilities for autonomous agent environments.
 
 ## Features
 
+- **Agent Reasoning & Candidate Prototyping**: Pure Python candidate adapter powered by NousResearch Hermes Agent patterns.
+- **Workflow & Graph Execution**: Adapter helpers for LangChain and LangGraph stateful runtimes.
+- **Declarative Assistant Skills**: Pre-packaged, zero-shell prompt configurations (`caveman`, `ui-ux-pro-max`) in `dotfiles/skills/`.
 - **AST Code Analysis & Knowledge Graphs**: Integration helpers for tree-sitter based AST parsing and deterministic code structure analysis.
 - **Operations Research & Scheduling**: Standard helpers for linear optimization and constraint solving powered by Google OR-Tools.
 - **Embedded Neural Inference**: Portable cross-platform CPU runtime evaluation via Microsoft ONNX Runtime.
@@ -24,6 +27,9 @@ Or install specific optional providers:
 
 ```bash
 pip install "agent_skill[all]"
+# Or specific feature sets:
+pip install "agent_skill[hermes]"
+pip install "agent_skill[langchain]"
 ```
 
 ## Quick Start
@@ -36,7 +42,16 @@ import agent_skill
 print(agent_skill.available_capabilities())
 ```
 
-### 2. Configure Enterprise Environment (Zero Shell Scripts)
+### 2. Candidate Reasoning (Hermes)
+```python
+from agent_skill import run_hermes_candidate
+
+result = run_hermes_candidate("Analyze algorithmic complexity of quicksort")
+print("Status:", result["status"])
+print("Receipt:", result["receipt"])
+```
+
+### 3. Configure Enterprise Environment (Zero Shell Scripts)
 To automatically configure standard declarative MCP and assistant settings (`~/.gemini/config/mcp_config.json`, `~/.claude/settings.json`) in pure Python:
 
 ```bash
@@ -55,6 +70,10 @@ This package complies with strict corporate security policies:
 ## Third-Party Notices & Licenses
 
 This project bundles and interfaces with several industry-standard open-source libraries:
+- **NousResearch Hermes Agent**: Licensed under the MIT License.
+- **Julius Brussee Caveman**: Licensed under the MIT License.
+- **LangChain**: Licensed under the MIT License.
+- **UI/UX Pro Max**: Licensed under the MIT License.
 - **Google OR-Tools**: Licensed under the Apache License, Version 2.0. Copyright Google LLC.
 - **Microsoft ONNX Runtime**: Licensed under the MIT License. Copyright Microsoft Corporation.
 - **Graphify / Tree-Sitter**: Licensed under the MIT License.

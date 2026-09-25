@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "agent_skill"
-version = "0.1.0"
-description = "Deterministic utilities, constraint satisfaction, and code analysis helpers for Python"
+version = "0.2.0"
+description = "Deterministic utilities, constraint satisfaction, and open-source toolchain adapters for agentic environments"
 readme = "README.md"
 license = { text = "Apache-2.0" }
 requires-python = ">=3.10"
@@ -15,9 +15,17 @@ dependencies = []
 agent-skill-setup = "agent_skill.configure:main"
 
 [project.optional-dependencies]
+hermes = [
+    "requests>=2.28.0"
+]
+langchain = [
+    "langchain-core>=0.1.0"
+]
 all = [
     "ortools>=9.8",
     "onnxruntime>=1.17",
     "graphifyy>=0.9",
-    "tree-sitter>=0.25"
+    "tree-sitter>=0.25",
+    "requests>=2.28.0",
+    "langchain-core>=0.1.0"
 ]

@@ -1,4 +1,4 @@
-"""agent_skill - deterministic utilities, constraint satisfaction, and code analysis helpers.
+"""agent_skill - deterministic utilities, constraint satisfaction, and open-source toolchain adapters.
 
 Enterprise Compliant:
 - Zero shell scripts (.sh).
@@ -6,10 +6,17 @@ Enterprise Compliant:
 - Standard declarative configuration dotfiles.
 """
 
+from __future__ import annotations
+
 from typing import TYPE_CHECKING, Any
 
-__version__ = "0.1.0"
-__all__ = ["available_capabilities", "configure_environment"]
+__version__ = "0.2.0"
+__all__ = [
+    "available_capabilities",
+    "configure_environment",
+    "run_hermes_candidate",
+    "run_langchain_graph",
+]
 
 
 def available_capabilities() -> dict[str, bool]:
@@ -18,6 +25,8 @@ def available_capabilities() -> dict[str, bool]:
         "ortools": False,
         "onnxruntime": False,
         "graphify": False,
+        "hermes": True,  # stdlib urllib fallback is always available
+        "langchain": False,
     }
     try:
         import ortools  # noqa: F401
@@ -37,6 +46,12 @@ def available_capabilities() -> dict[str, bool]:
     except ImportError:
         pass
 
+    try:
+        import langchain_core  # noqa: F401
+        capabilities["langchain"] = True
+    except ImportError:
+        pass
+
     return capabilities
 
 
@@ -44,3 +59,15 @@ def configure_environment(*args: Any, **kwargs: Any) -> Any:
     """Lazy import of configure_environment to keep package import clean."""
     from agent_skill.configure import configure_environment as _cfg
     return _cfg(*args, **kwargs)
+
+
+def run_hermes_candidate(*args: Any, **kwargs: Any) -> Any:
+    """Lazy import of run_hermes_candidate."""
+    from agent_skill.hermes import run_hermes_candidate as _hermes
+    return _hermes(*args, **kwargs)
+
+
+def run_langchain_graph(*args: Any, **kwargs: Any) -> Any:
+    """Lazy import of run_langchain_graph."""
+    from agent_skill.langchain_adapter import run_langchain_graph as _langchain
+    return _langchain(*args, **kwargs)

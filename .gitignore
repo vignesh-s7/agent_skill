@@ -39,3 +39,11 @@ ENV/
 .vscode/
 *.swp
 *.swo
+
+# Secrets and Local Tool Artifacts
+.aider*
+*.env
+.env*
+*.key
+secrets/
+credentials/

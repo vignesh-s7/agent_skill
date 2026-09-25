@@ -1,0 +1,4 @@
+# Aider Configuration for Intel Core RAS Provider
+# Zero Disk Key Storage: API keys are NEVER stored on disk.
+openai-api-base: http://127.0.0.1:8000/v1
+model: openai/core-rsn

@@ -95,10 +95,22 @@ def configure_environment(target_home: Path | None = None) -> Dict[str, Any]:
     with open(claude_config_path, "w", encoding="utf-8") as f:
         json.dump(claude_settings, f, indent=2)
 
+    # 3. Aider Intel Core RAS Configuration (Zero Key Storage)
+    aider_conf_path = home / ".aider.conf.yml"
+    aider_conf_content = (
+        "# Aider Configuration for Intel Core RAS Provider\n"
+        "# Zero Disk Key Storage: API keys are NEVER stored on disk.\n"
+        "openai-api-base: http://127.0.0.1:8000/v1\n"
+        "model: openai/core-rsn\n"
+    )
+    with open(aider_conf_path, "w", encoding="utf-8") as f:
+        f.write(aider_conf_content)
+
     return {
         "status": "CONFIGURED",
         "gemini_mcp": str(gemini_config_path),
         "claude_settings": str(claude_config_path),
+        "aider_config": str(aider_conf_path),
         "node_binary": node_bin,
         "skills_directory": skills_dir,
     }
@@ -110,6 +122,7 @@ def main() -> int:
     print("==> Open Garden Environment Configured (Pure Python, Zero Shell):")
     print(f"  [✓] Gemini MCP:     {result['gemini_mcp']}")
     print(f"  [✓] Claude Config:  {result['claude_settings']}")
+    print(f"  [✓] Aider Config:   {result['aider_config']}")
     print(f"  [i] Node Binary:    {result['node_binary']}")
     print(f"  [i] Skills Path:    {result['skills_directory']}")
     return 0

@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "Skills-MCP-L": {
+      "command": "node",
+      "args": ["${SKILLS_PATH:-/workspaces/skills}/server/dist/stdio.js"],
+      "env": {
+        "PATH": "/usr/local/bin:/usr/bin:/bin"
+      }
+    }
+  }
+}

@@ -1,6 +1,15 @@
-"""agent_skill - deterministic utilities, constraint satisfaction, and code analysis helpers."""
+"""agent_skill - deterministic utilities, constraint satisfaction, and code analysis helpers.
+
+Enterprise Compliant:
+- Zero shell scripts (.sh).
+- Statically auditable pure Python.
+- Standard declarative configuration dotfiles.
+"""
+
+from typing import TYPE_CHECKING, Any
 
 __version__ = "0.1.0"
+__all__ = ["available_capabilities", "configure_environment"]
 
 
 def available_capabilities() -> dict[str, bool]:
@@ -29,3 +38,9 @@ def available_capabilities() -> dict[str, bool]:
         pass
 
     return capabilities
+
+
+def configure_environment(*args: Any, **kwargs: Any) -> Any:
+    """Lazy import of configure_environment to keep package import clean."""
+    from agent_skill.configure import configure_environment as _cfg
+    return _cfg(*args, **kwargs)
